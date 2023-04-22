@@ -10,8 +10,10 @@
 n — кол-во элементов первого множества.
 m — кол-во элементов второго множества.
 Затем пользователь вводит сами элементы множеств.
-(В нашем случае множества генерируется случайными целыми числами)
+(В нашем случае множества генерируется случайными целыми числами от 1 до 100)
 '''
+
+import random
 
 # Функция вывода автора программы
 def author():
@@ -24,3 +26,20 @@ def author():
 
 _n = int(input("Введите количество элементов в множестве n = "))
 _m = int(input("Введите количество элементов в множестве m = "))
+_set_n = set()
+_set_m = set()
+for i in range(_n):
+    _set_n.add(random.randint(1, 100))
+for i in range(_m):
+    _set_m.add(random.randint(1, 100))
+print(_set_n)
+print(_set_m)
+_set_result = _set_n & _set_m
+_list_result = list(_set_result)
+for i in _list_result:
+    for j in _list_result:
+        if i < j:
+            _temp = i
+            i = j
+            j = _temp
+print(_list_result)
